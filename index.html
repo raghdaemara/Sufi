@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="أوراد الطريقة الشاذلية - للإمام أبي الحسن الشاذلي">
+<title>أوراد الطريقة الشاذلية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#c9a84c;--gold-l:#e8c97a;--gold-p:#f5e6c0;
+  --ink:#120c00;--ink2:#1a1000;
+  --border:rgba(201,168,76,0.22);
+  --parch:rgba(245,230,192,0.85);
+  --parch2:rgba(245,230,192,0.45);
+  --parch3:rgba(245,230,192,0.22);
+}
+html,body{min-height:100%;direction:rtl;}
+body{
+  background:linear-gradient(160deg,#120c00 0%,#1a1200 60%,#0d1a10 100%);
+  color:var(--parch);font-family:'Amiri','Scheherazade New',serif;
+  min-height:100vh;
+}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+
+/* ── HEADER ── */
+.header{
+  text-align:center;padding:1.6rem 1rem 1.2rem;
+  border-bottom:1px solid var(--border);
+  background:rgba(0,0,0,0.35);position:relative;
+}
+.header::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,transparent,var(--gold),var(--gold-l),var(--gold),transparent);
+}
+.orn-row{display:flex;align-items:center;gap:.6rem;margin:.35rem 0;}
+.orn-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.35),transparent);}
+.orn-star{color:var(--gold);font-size:.65rem;opacity:.7;}
+h1{
+  font-family:'Scheherazade New',serif;
+  font-size:clamp(1.6rem,4.5vw,2.6rem);
+  color:var(--gold-l);font-weight:700;letter-spacing:.02em;line-height:1.2;
+  text-shadow:0 2px 24px rgba(201,168,76,.25);
+}
+.hdr-sub{font-size:clamp(.75rem,1.8vw,.95rem);color:var(--parch3);margin-top:.3rem;}
+.hdr-sub-en{font-size:.78rem;color:rgba(245,230,192,.22);letter-spacing:.1em;font-style:italic;margin-top:.15rem;}
+.back-btn{
+  display:none;margin-top:.6rem;
+  background:none;border:1px solid rgba(201,168,76,.35);color:var(--gold);
+  padding:.3rem 1rem;border-radius:20px;cursor:pointer;font-family:'Amiri',serif;
+  font-size:.85rem;transition:all .2s;
+}
+.back-btn:hover{background:rgba(201,168,76,.1);border-color:var(--gold);}
+#breadcrumb{display:none;margin-top:.4rem;font-size:.88rem;color:var(--gold-p);}
+
+/* ── HOME ── */
+#homeView{max-width:980px;margin:0 auto;padding:1.5rem 1.2rem 4rem;}
+.bismillah{
+  text-align:center;font-family:'Scheherazade New',serif;
+  font-size:clamp(.95rem,2.5vw,1.2rem);color:var(--gold);
+  opacity:.85;margin-bottom:.8rem;
+}
+.fihrist-t{
+  text-align:center;font-family:'Scheherazade New',serif;
+  font-size:clamp(2rem,6vw,3.2rem);color:var(--gold-l);
+  font-weight:700;margin-bottom:.3rem;
+  text-shadow:0 0 40px rgba(201,168,76,.18);
+}
+.choose-t{text-align:center;font-size:.82rem;color:var(--parch3);margin-bottom:1.8rem;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.9rem;}
+
+.card{
+  background:rgba(201,168,76,.05);
+  border:1px solid rgba(201,168,76,.13);
+  border-right:3px solid var(--ca,#c9a84c);
+  border-radius:8px;padding:1.1rem 1rem .9rem;
+  cursor:pointer;text-align:right;
+  display:grid;grid-template-columns:auto 1fr;
+  grid-template-rows:1fr auto;gap:.2rem .65rem;
+  transition:transform .22s,box-shadow .22s,background .22s,border-color .22s;
+  font-family:'Amiri',serif;color:var(--parch);
+  animation:fadein .4s ease forwards;opacity:0;
+}
+.card:hover{
+  background:rgba(201,168,76,.1);border-color:var(--ca,#c9a84c);
+  transform:translateY(-2px);
+  box-shadow:0 8px 28px rgba(0,0,0,.45);
+}
+.card-n{
+  color:var(--ca,#c9a84c);font-size:1.55rem;font-weight:700;
+  opacity:.55;line-height:1;grid-row:1/3;align-self:center;
+}
+.card-t{
+  font-family:'Scheherazade New',serif;
+  font-size:clamp(.98rem,2.5vw,1.18rem);
+  font-weight:700;color:var(--gold-p);line-height:1.3;
+}
+.card-s{font-size:.7rem;color:var(--parch3);font-style:italic;letter-spacing:.04em;}
+.card-meta{grid-column:2;display:flex;gap:.5rem;margin-top:.45rem;}
+.pill{font-size:.68rem;color:var(--parch3);border:1px solid rgba(201,168,76,.15);padding:.1rem .45rem;border-radius:10px;}
+.grid-foot{text-align:center;padding:2.5rem 0 0;color:rgba(201,168,76,.22);font-size:.7rem;letter-spacing:.3em;}
+
+/* ── READER ── */
+#readerView{display:none;max-width:820px;margin:0 auto;padding:1rem 1rem 3rem;}
+
+.section-scroll{
+  display:flex;gap:.35rem;overflow-x:auto;padding-bottom:.4rem;
+  margin-bottom:.9rem;scrollbar-width:none;
+}
+.section-scroll::-webkit-scrollbar{display:none;}
+.sjump{
+  flex-shrink:0;background:none;
+  border:1px solid var(--border);color:var(--parch3);
+  padding:.25rem .65rem;border-radius:4px;cursor:pointer;
+  font-family:'Amiri',serif;font-size:.73rem;transition:all .18s;white-space:nowrap;
+}
+.sjump:hover,.sjump.on{background:rgba(201,168,76,.1);color:var(--gold);border-color:var(--gold);}
+
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(201,168,76,.06);border:1px solid var(--border);
+  border-radius:8px;padding:.5rem .9rem;margin-bottom:.85rem;
+}
+.nbtn{
+  background:none;border:1px solid rgba(201,168,76,.3);color:var(--gold);
+  width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1.15rem;
+  display:flex;align-items:center;justify-content:center;transition:all .18s;
+}
+.nbtn:hover:not(:disabled){background:rgba(201,168,76,.15);border-color:var(--gold);}
+.nbtn:disabled{opacity:.2;cursor:not-allowed;}
+.pginfo{display:flex;align-items:center;gap:.5rem;font-family:'Amiri',serif;}
+.pgl{font-size:.8rem;color:var(--parch3);}
+.pgn{font-size:1.25rem;color:var(--gold-l);font-weight:700;}
+.pgt{font-size:.75rem;color:var(--parch3);}
+
+.img-wrap{
+  background:rgba(0,0,0,.5);border:1px solid var(--border);
+  border-radius:8px;overflow:hidden;min-height:500px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+#pageImg{max-width:100%;display:block;transition:opacity .25s;}
+.spin-ov{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:.75rem;
+  background:rgba(18,12,0,.9);color:var(--gold);
+  font-family:'Amiri',serif;font-size:1rem;
+  transition:opacity .3s;pointer-events:none;
+}
+.spinner{
+  width:38px;height:38px;border:3px solid rgba(201,168,76,.2);
+  border-top-color:var(--gold);border-radius:50%;
+  animation:spin .8s linear infinite;
+}
+
+.botnav{display:flex;align-items:center;justify-content:space-between;margin-top:1rem;gap:.5rem;flex-wrap:wrap;}
+.bigbtn{
+  background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.3);
+  color:var(--gold);padding:.45rem 1.2rem;border-radius:6px;cursor:pointer;
+  font-family:'Amiri',serif;font-size:.88rem;transition:all .2s;
+}
+.bigbtn:hover:not(:disabled){background:rgba(201,168,76,.15);border-color:var(--gold);}
+.bigbtn:disabled{opacity:.2;cursor:not-allowed;}
+.dots{display:flex;gap:4px;flex-wrap:wrap;justify-content:center;max-width:280px;}
+.dot{
+  width:7px;height:7px;border-radius:50%;
+  background:rgba(201,168,76,.18);border:1px solid rgba(201,168,76,.28);
+  cursor:pointer;padding:0;transition:all .18s;
+}
+.dot.on{background:var(--gold);border-color:var(--gold);transform:scale(1.35);}
+
+@keyframes fadein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .grid{grid-template-columns:1fr;}
+  #readerView{padding:.75rem .75rem 2rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="orn-row"><span class="orn-line"></span><span class="orn-star">◆</span><span class="orn-line"></span></div>
+  <h1>أوراد الطريقة الشاذلية</h1>
+  <p class="hdr-sub">للإمام القطب الغوث الفرد أبي الحسن الشاذلي رضي الله عنه</p>
+  <p class="hdr-sub-en">Awrad of the Shadhili Tariqa · Abu al-Hasan al-Shadhili</p>
+  <button class="back-btn" id="backBtn" onclick="goHome()">← الفهرس</button>
+  <div id="breadcrumb"></div>
+  <div class="orn-row" style="margin-top:.6rem"><span class="orn-line"></span><span class="orn-star">✦</span><span class="orn-line"></span></div>
+</header>
+
+<!-- HOME VIEW -->
+<div id="homeView">
+  <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+  <div class="fihrist-t">فهرست</div>
+  <div class="choose-t">اختر من الأبواب</div>
+  <div class="grid" id="grid"></div>
+  <div class="grid-foot">✦ ✦ ✦</div>
+</div>
+
+<!-- READER VIEW -->
+<div id="readerView">
+  <div class="section-scroll" id="sectionScroll"></div>
+
+  <div class="topbar">
+    <button class="nbtn" id="prevBtn" onclick="changePage(-1)">›</button>
+    <div class="pginfo">
+      <span class="pgl">الصفحة</span>
+      <span class="pgn" id="pgNum">١</span>
+      <span class="pgt" id="pgTot">من ١١٣</span>
+    </div>
+    <button class="nbtn" id="nextBtn" onclick="changePage(1)">‹</button>
+  </div>
+
+  <div class="img-wrap">
+    <div class="spin-ov" id="spinOv">
+      <div class="spinner"></div>
+      <span>جاري التحميل…</span>
+    </div>
+    <img id="pageImg" alt="صفحة" src="" style="opacity:0">
+  </div>
+
+  <div class="botnav">
+    <button class="bigbtn" id="prevBig" onclick="changePage(-1)">الصفحة السابقة ›</button>
+    <div class="dots" id="dotRow"></div>
+    <button class="bigbtn" id="nextBig" onclick="changePage(1)">‹ الصفحة التالية</button>
+  </div>
+</div>
+
+<script>
+const AR='٠١٢٣٤٥٦٧٨٩'.split('');
+function ar(n){return String(n).replace(/\d/g,d=>AR[+d]);}
+
+const SECTIONS=[
+  {id:'muqaddima', title:'المقدمة',            sub:'Introduction',                    page:2,  end:3,   c:'#c9a84c'},
+  {id:'sanad',     title:'سند الطريق',          sub:'Chain of Transmission',           page:4,  end:10,  c:'#7ab8a0'},
+  {id:'wird',      title:'الورد العام',          sub:'The General Wird',                page:11, end:13,  c:'#c97a7a'},
+  {id:'bahr',      title:'حزب البحر',           sub:'Hizb al-Bahr',                   page:14, end:19,  c:'#7a9ec9'},
+  {id:'kabir',     title:'الحزب الكبير',         sub:'The Great Hizb',                 page:20, end:33,  c:'#a07ac9'},
+  {id:'nur',       title:'حزب النور',           sub:'Hizb al-Nur',                    page:34, end:42,  c:'#c9b87a'},
+  {id:'shaykh',    title:'حزب الشيخ',           sub:'Hizb al-Sheikh',                 page:43, end:52,  c:'#7ac9a0'},
+  {id:'dawaat',    title:'دعوات أبي الحسن',      sub:'Prayers of Abu al-Hasan',        page:53, end:58,  c:'#c97a7a'},
+  {id:'mursi',     title:'حزب أبي العباس المرسي',sub:'Hizb of al-Mursi',              page:59, end:74,  c:'#c9a84c'},
+  {id:'wazifa',    title:'الوظيفة',             sub:'Al-Wazifa',                      page:75, end:83,  c:'#7ab8a0'},
+  {id:'nasr',      title:'حزب النصر',           sub:'Hizb al-Nasr',                  page:84, end:88,  c:'#a07ac9'},
+  {id:'yaqut',     title:'الياقوتية',            sub:'Al-Yaqutiyya',                  page:89, end:92,  c:'#7a9ec9'},
+  {id:'latif',     title:'اللطيفنة',             sub:'Al-Latifiyya',                  page:93, end:94,  c:'#c9b87a'},
+  {id:'usul',      title:'أصول الطريقة',         sub:'Principles of the Path',        page:95, end:103, c:'#c97a7a'},
+  {id:'rufiat',    title:'رُفعت أستار البين',    sub:"Ruf'iat Astar al-Bayn",         page:104,end:105, c:'#7ac9a0'},
+  {id:'hal',       title:'حال أهل الله',         sub:'State of the People of Allah',  page:106,end:113, c:'#c9a84c'},
+];
+
+const TOTAL=113;
+let curPage=1, curSec=null;
+
+// Build home grid
+const grid=document.getElementById('grid');
+SECTIONS.forEach((s,i)=>{
+  const pages=s.end-s.page+1;
+  const el=document.createElement('button');
+  el.className='card';
+  el.style.cssText=`--ca:${s.c};animation-delay:${i*.045}s`;
+  el.innerHTML=
+    `<div class="card-n">${ar(i+1)}</div>`+
+    `<div class="card-t">${s.title}</div>`+
+    `<div class="card-s">${s.sub}</div>`+
+    `<div class="card-meta">`+
+      `<span class="pill">صفحة ${ar(s.page)}</span>`+
+      `<span class="pill">${ar(pages)} صفحات</span>`+
+    `</div>`;
+  el.onclick=()=>openSection(s);
+  grid.appendChild(el);
+});
+
+// Build section scroll buttons
+const ss=document.getElementById('sectionScroll');
+SECTIONS.forEach((s,i)=>{
+  const b=document.createElement('button');
+  b.className='sjump'; b.id='sj-'+s.id;
+  b.textContent=ar(i+1)+' · '+s.title;
+  b.onclick=()=>openSection(s);
+  ss.appendChild(b);
+});
+
+function openSection(s){
+  curSec=s; curPage=s.page;
+  document.getElementById('homeView').style.display='none';
+  document.getElementById('readerView').style.display='block';
+  document.getElementById('backBtn').style.display='inline-block';
+  document.getElementById('breadcrumb').style.display='block';
+  document.getElementById('breadcrumb').textContent=s.title;
+  highlightJump();
+  loadPage(curPage);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function goHome(){
+  document.getElementById('homeView').style.display='';
+  document.getElementById('readerView').style.display='none';
+  document.getElementById('backBtn').style.display='none';
+  document.getElementById('breadcrumb').style.display='none';
+  curSec=null;
+}
+
+function highlightJump(){
+  document.querySelectorAll('.sjump').forEach(b=>b.classList.remove('on'));
+  if(curSec){
+    const el=document.getElementById('sj-'+curSec.id);
+    if(el){el.classList.add('on');el.scrollIntoView({inline:'center',behavior:'smooth'});}
+  }
+}
+
+const img=document.getElementById('pageImg');
+const spinOv=document.getElementById('spinOv');
+
+function loadPage(p){
+  // Show spinner
+  spinOv.style.opacity='1';
+  img.style.opacity='0';
+
+  const pad=String(p).padStart(3,'0');
+  const src=`pages/${pad}.jpg`;
+
+  const tmp=new Image();
+  tmp.onload=()=>{
+    img.src=src;
+    img.style.opacity='1';
+    spinOv.style.opacity='0';
+  };
+  tmp.onerror=()=>{
+    spinOv.innerHTML='<span style="color:rgba(245,230,192,.5);padding:2rem;text-align:center">لم يتم العثور على الصفحة</span>';
+  };
+  tmp.src=src;
+
+  // Update UI
+  document.getElementById('pgNum').textContent=ar(p);
+  document.getElementById('pgTot').textContent='من '+ar(TOTAL);
+  document.getElementById('prevBtn').disabled=p<=1;
+  document.getElementById('nextBtn').disabled=p>=TOTAL;
+  document.getElementById('prevBig').disabled=p<=1;
+  document.getElementById('nextBig').disabled=p>=TOTAL;
+  buildDots();
+  // Update section
+  const sec=[...SECTIONS].reverse().find(s=>p>=s.page);
+  if(sec&&(!curSec||sec.id!==curSec.id)){curSec=sec;highlightJump();}
+}
+
+function changePage(dir){
+  const np=curPage+dir;
+  if(np<1||np>TOTAL)return;
+  curPage=np;
+  loadPage(curPage);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function buildDots(){
+  const row=document.getElementById('dotRow');
+  row.innerHTML='';
+  if(!curSec)return;
+  const cnt=curSec.end-curSec.page+1;
+  if(cnt>28){
+    row.innerHTML=`<span style="font-size:.72rem;color:rgba(245,230,192,.28)">${ar(cnt)} صفحات في هذا الباب</span>`;
+    return;
+  }
+  for(let i=0;i<cnt;i++){
+    const pg=curSec.page+i;
+    const d=document.createElement('button');
+    d.className='dot'+(curPage===pg?' on':'');
+    d.onclick=(()=>{const x=pg;return()=>{curPage=x;loadPage(x);}})();
+    row.appendChild(d);
+  }
+}
+
+// Keyboard navigation
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('readerView').style.display==='none')return;
+  if(e.key==='ArrowRight'||e.key==='ArrowUp')changePage(-1);
+  if(e.key==='ArrowLeft'||e.key==='ArrowDown')changePage(1);
+});
+</script>
+</body>
+</html>
