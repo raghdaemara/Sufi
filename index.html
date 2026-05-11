@@ -453,11 +453,11 @@ function handleSwipe() {
   
   if (Math.abs(diff) > threshold) {
     if (diff > 0) {
-      // Swipe Right -> Previous Page (in RTL)
-      changePage(-1);
-    } else {
-      // Swipe Left -> Next Page (in RTL)
+      // Swipe Right -> Next Page
       changePage(1);
+    } else {
+      // Swipe Left -> Previous Page
+      changePage(-1);
     }
   }
 }
