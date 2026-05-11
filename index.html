@@ -242,6 +242,7 @@ h1{
       <span class="pgt" id="pgTot">من ١١٣</span>
     </div>
     <button class="nbtn" id="nextBtn" onclick="changePage(1)">‹</button>
+    <button class="nbtn" id="fsBtn" onclick="toggleFS()" style="margin-right:0.5rem; font-size: 1rem;">⛶</button>
   </div>
 
   <div class="img-wrap">
@@ -438,6 +439,31 @@ function handleSwipe() {
     }
   }
 }
+
+function toggleFS() {
+  const btn = document.getElementById('fsBtn');
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(err => {
+      console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+    });
+    btn.textContent = '🗗'; // Exit icon
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+      btn.textContent = '⛶';
+    }
+  }
+}
+
+// Update icon on fullscreen change (e.g. if Esc is pressed)
+document.addEventListener('fullscreenchange', () => {
+  const btn = document.getElementById('fsBtn');
+  if (!document.fullscreenElement) {
+    btn.textContent = '⛶';
+  } else {
+    btn.textContent = '🗗';
+  }
+});
 </script>
 </body>
 </html>
