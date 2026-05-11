@@ -199,8 +199,30 @@ h1{
 
 /* ── RESPONSIVE ── */
 @media(max-width:600px){
-  .grid{grid-template-columns:1fr;}
-  #readerView{padding:.75rem .75rem 2rem;}
+  .botnav { padding: 0 0.5rem; }
+}
+
+/* CSS Fullscreen Fallback */
+body.is-fullscreen #readerView {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--ink);
+  padding: 0;
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+}
+body.is-fullscreen .img-wrap {
+  flex: 1;
+  border: none;
+}
+body.is-fullscreen #pageImg {
+  max-height: 90vh;
+  object-fit: contain;
+}
+body.is-fullscreen .header, body.is-fullscreen #homeView {
+  display: none !important;
 }
 </style>
 </head>
@@ -220,7 +242,7 @@ h1{
 <!-- HOME VIEW -->
 <div id="homeView">
   <div class="hero-top">
-    <img src="pages/hero-top.png?v=2" alt="صورة في أعلى الصفحة">
+    <img src="pages/hero-top.png?v=999" alt="صورة في أعلى الصفحة">
     <div class="hero-cap">نور وذكر في مطلع الصفحة</div>
   </div>
   <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
@@ -462,7 +484,45 @@ document.addEventListener('MSFullscreenChange', handleFSChange);
 function handleFSChange() {
   const btn = document.getElementById('fsBtn');
   const isFS = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
-  btn.textContent = isFS ? '🗗' : '⛶';
+  
+  if (isFS) {
+    document.body.classList.add('is-fullscreen');
+    btn.textContent = '🗗';
+  } else {
+    document.body.classList.remove('is-fullscreen');
+    btn.textContent = '⛶';
+  }
+}
+
+// Fallback for mobile devices that don't support the Fullscreen API (like iPhone)
+function toggleFS() {
+  const btn = document.getElementById('fsBtn');
+  const docEl = document.documentElement;
+  const isAPI_FS = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+
+  if (document.body.classList.contains('is-fullscreen')) {
+    // If we are in pseudo-fullscreen, try to exit API FS first
+    if (isAPI_FS) {
+      const exitFS = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen;
+      if (exitFS) exitFS.call(document);
+    }
+    document.body.classList.remove('is-fullscreen');
+    btn.textContent = '⛶';
+  } else {
+    // Try API FS
+    const requestFS = docEl.requestFullscreen || docEl.webkitRequestFullscreen || docEl.mozRequestFullScreen || docEl.msRequestFullscreen;
+    if (requestFS) {
+      requestFS.call(docEl).catch(e => {
+        // API failed or not supported, use CSS fallback
+        document.body.classList.add('is-fullscreen');
+        btn.textContent = '🗗';
+      });
+    } else {
+      // No API support (iOS), use CSS fallback
+      document.body.classList.add('is-fullscreen');
+      btn.textContent = '🗗';
+    }
+  }
 }
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
