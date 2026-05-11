@@ -220,7 +220,7 @@ h1{
 <!-- HOME VIEW -->
 <div id="homeView">
   <div class="hero-top">
-    <img src="pages/hero-top.png" alt="صورة في أعلى الصفحة">
+    <img src="pages/hero-top.png?v=2" alt="صورة في أعلى الصفحة">
     <div class="hero-cap">نور وذكر في مطلع الصفحة</div>
   </div>
   <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
@@ -250,7 +250,7 @@ h1{
       <div class="spinner"></div>
       <span>جاري التحميل…</span>
     </div>
-    <img id="pageImg" alt="صفحة" src="" style="opacity:0">
+    <img id="pageImg" alt="صفحة" src="" style="opacity:0; cursor: pointer;" onclick="toggleFS()">
   </div>
 
   <div class="botnav">
@@ -442,28 +442,29 @@ function handleSwipe() {
 
 function toggleFS() {
   const btn = document.getElementById('fsBtn');
-  if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen().catch(err => {
-      console.error(`Error attempting to enable full-screen mode: ${err.message}`);
-    });
-    btn.textContent = '🗗'; // Exit icon
+  const docEl = document.documentElement;
+  const isFS = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+
+  if (!isFS) {
+    const requestFS = docEl.requestFullscreen || docEl.webkitRequestFullscreen || docEl.mozRequestFullScreen || docEl.msRequestFullscreen;
+    if (requestFS) requestFS.call(docEl).catch(e => console.error(e));
   } else {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-      btn.textContent = '⛶';
-    }
+    const exitFS = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen;
+    if (exitFS) exitFS.call(document);
   }
 }
 
-// Update icon on fullscreen change (e.g. if Esc is pressed)
-document.addEventListener('fullscreenchange', () => {
+document.addEventListener('fullscreenchange', handleFSChange);
+document.addEventListener('webkitfullscreenchange', handleFSChange);
+document.addEventListener('mozfullscreenchange', handleFSChange);
+document.addEventListener('MSFullscreenChange', handleFSChange);
+
+function handleFSChange() {
   const btn = document.getElementById('fsBtn');
-  if (!document.fullscreenElement) {
-    btn.textContent = '⛶';
-  } else {
-    btn.textContent = '🗗';
-  }
-});
+  const isFS = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+  btn.textContent = isFS ? '🗗' : '⛶';
+}
 </script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
